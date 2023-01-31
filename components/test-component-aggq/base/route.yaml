@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-aggq
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-aggq
+    app.kubernetes.io/part-of: test-app-zijo
+  name: test-component-aggq
+  namespace: pipeline-e2e-ygjt
+spec:
+  port:
+    targetPort: 8081
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: test-component-aggq
+    weight: 100
+status: {}

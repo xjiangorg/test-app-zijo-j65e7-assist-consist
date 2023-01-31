@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-aggq
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-aggq
+    app.kubernetes.io/part-of: test-app-zijo
+  name: test-component-aggq
+  namespace: pipeline-e2e-ygjt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: test-component-aggq
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: test-component-aggq
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:5f8c8c9ff0a748aaaf87e55a9b63df24
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 8081
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 8081
+        resources: {}
+status: {}
