@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: test-component-aggq
     spec:
       containers:
-      - image: quay.io/redhat-appstudio-qe/test-images:5f8c8c9ff0a748aaaf87e55a9b63df24
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:e1473c2516a1d3974dbf07ec9246a9898d64f78799a62fe72c5ed0adc468ae1c
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
